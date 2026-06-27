@@ -12,6 +12,17 @@ export const contentType = "image/png";
 export const alt =
   "Dezignxo — premium 3D models, Lottie animations, and SVG icons.";
 
+// Force the route to regenerate on every request instead of being cached
+// at Vercel's edge. Without this, the PNG produced at build time gets
+// pinned in the CDN and survives subsequent deploys — which is what
+// trapped the old "GameChanger" wordmark in the SERP / WhatsApp /
+// Twitter previews even after the source code shipped the new brand.
+// The image is only fetched by social crawlers (low volume), so the
+// per-request render cost is irrelevant compared to the cost of a
+// stuck stale image.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default function OpenGraphImage() {
   return new ImageResponse(
     (
