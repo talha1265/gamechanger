@@ -10,7 +10,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt =
-  "Dezignxo — the marketplace for premium 3D & AR assets.";
+  "Dezignxo — premium 3D models, Lottie animations, and SVG icons.";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -40,31 +40,35 @@ export default function OpenGraphImage() {
           <path d="M52 22 L32 32 L32 52 L52 42 Z" fill="#a855f7" />
         </svg>
 
-        {/* Wordmark — "Game" tinted, "Changer" white, matching the navbar logo. */}
+        {/* Wordmark — solid white "Dezignxo", matching the single-token
+            mark used in the navbar Logo. The iso cube above already
+            carries the brand color, so the wordmark stays clean and
+            high-contrast for SERP thumbnails. */}
         <div
           style={{
-            fontSize: 108,
+            fontSize: 124,
             fontWeight: 800,
             letterSpacing: "-0.04em",
             color: "#ffffff",
             display: "flex",
           }}
         >
-          <span style={{ color: "#a855f7" }}>Game</span>
-          <span>Changer</span>
+          Dezignxo
         </div>
 
-        {/* Tagline */}
+        {/* Tagline — mirrors the home page sub-headline + meta
+            description so the SERP preview image, the snippet, and
+            the rendered hero all carry the same positioning. */}
         <div
           style={{
-            fontSize: 34,
+            fontSize: 32,
             color: "#a8a8bd",
             marginTop: 24,
             textAlign: "center",
             display: "flex",
           }}
         >
-          Premium 3D &amp; AR assets — built by creators, for creators.
+          Premium 3D models, Lottie animations &amp; SVG icons.
         </div>
       </div>
     ),

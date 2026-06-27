@@ -15,7 +15,7 @@ const ADMIN_EMAIL =
   process.env.SEED_ADMIN_EMAIL?.toLowerCase().trim() || "admin@local.test";
 const ADMIN_PASSWORD = process.env.SEED_ADMIN_PASSWORD || "Admin12345";
 
-const SAMPLES_EMAIL = "samples@gamechanger.local";
+const SAMPLES_EMAIL = "samples@dezignxo.local";
 
 // Kept in sync with lib/mock/assets.ts. If you edit one, edit the other.
 // Prices are in INR paise (₹1 = 100 paise). Razorpay's minimum charge is ₹1.
@@ -33,8 +33,8 @@ const MOCK_ASSETS = [
 ];
 
 const PLACEHOLDER_REL = "placeholders/sample.txt";
-const PLACEHOLDER_BODY = `GameChanger sample asset
-=========================
+const PLACEHOLDER_BODY = `Dezignxo sample asset
+=====================
 
 This is a placeholder file shipped with the seeded marketplace samples.
 

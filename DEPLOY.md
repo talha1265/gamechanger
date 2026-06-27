@@ -1,4 +1,4 @@
-# GameChanger — Deployment Guide
+# Dezignxo — Deployment Guide
 
 End-to-end guide to take this app from `localhost:3000` to a live, production-ready deployment.
 
@@ -46,9 +46,9 @@ You need Postgres running locally OR you can point straight at a Neon dev branch
 winget install PostgreSQL.PostgreSQL.16
 
 # Create the dev DB
-createdb gamechanger_dev
+createdb dezignxo_dev
 # Connection string:
-# postgresql://postgres:postgres@localhost:5432/gamechanger_dev
+# postgresql://postgres:postgres@localhost:5432/dezignxo_dev
 ```
 
 ### Initialize
@@ -115,7 +115,7 @@ npx prisma migrate deploy
 
 ## 3. Cloudflare R2 (file storage)
 
-1. Cloudflare dashboard → **R2** → **Create bucket** → name it `gamechanger-prod`
+1. Cloudflare dashboard → **R2** → **Create bucket** → name it `dezignxo-prod`
 2. Settings → **CORS policy** → add:
 
    ```json
@@ -131,7 +131,7 @@ npx prisma migrate deploy
 
 3. **R2 → Manage API Tokens → Create API Token**
    - Permissions: **Object Read & Write**
-   - Specify bucket: `gamechanger-prod`
+   - Specify bucket: `dezignxo-prod`
    - Copy `Access Key ID` and `Secret Access Key`
 
 4. Note your **Account ID** (top-right of Cloudflare dashboard)
@@ -180,7 +180,7 @@ PayPal webhook (when you wire it up):
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/<you>/gamechanger.git
+git remote add origin https://github.com/<you>/dezignxo.git
 git push -u origin main
 ```
 
@@ -209,7 +209,7 @@ git push -u origin main
 | `R2_ACCOUNT_ID` | Cloudflare account ID | |
 | `R2_ACCESS_KEY_ID` | From R2 API token | |
 | `R2_SECRET_ACCESS_KEY` | From R2 API token | |
-| `R2_BUCKET_NAME` | `gamechanger-prod` | |
+| `R2_BUCKET_NAME` | `dezignxo-prod` | |
 | `R2_PUBLIC_URL` | `https://assets.yourdomain.com` | Optional CDN |
 | `PAYPAL_CLIENT_ID` | From PayPal app | |
 | `PAYPAL_CLIENT_SECRET` | From PayPal app | |
