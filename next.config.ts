@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
   // Compress responses for free bandwidth wins
   compress: true,
 
+  // Skip Next.js's in-build TypeScript and ESLint workers. They were OOMing
+  // on Vercel ("Fatal process out of memory: Zone" during the post-compile
+  // TS pass), which blocked every deploy from 5724ede onward and left the
+  // production site stuck on a stale build with the old "GameChanger" OG
+  // image. `tsc --noEmit` is the authoritative type check and is run
+  // separately; the in-build worker is redundant.
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
+
   images: {
     remotePatterns: [
       // Cloudflare R2 custom domain (set R2_PUBLIC_URL in env)
