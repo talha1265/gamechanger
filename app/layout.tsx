@@ -70,6 +70,13 @@ export const metadata: Metadata = {
   // Stops mobile browsers from auto-linking phone numbers, addresses and
   // emails that happen to appear in copy — they aren't real CTAs.
   formatDetection: { telephone: false, address: false, email: false },
+  // No OG image. The previous /opengraph-image PNG got pinned in
+  // Vercel's edge cache with the old "GameChanger" wordmark and we
+  // can't invalidate it from the codebase that owns the deployment
+  // serving www.dezignxo.com. Better to ship social previews with
+  // no image at all than with the wrong brand image - Twitter falls
+  // back to a "summary" card, WhatsApp/Facebook just render the
+  // title + description with no thumbnail.
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -78,32 +85,13 @@ export const metadata: Metadata = {
     description:
       "Production-ready 3D models, 3D icons, Lottie animations, and SVG icon packs. Royalty-free commercial license on every download. Browse, buy, or upload your own.",
     siteName: "Dezignxo",
-    // Explicit OG image URL — points at /api/og (a normal route
-    // handler) instead of the Next.js opengraph-image.tsx file
-    // convention. The file convention pinned its PNG in Vercel's
-    // edge cache with a path-only cache key and kept serving the
-    // old "GameChanger" PNG across three deploys despite source
-    // changes. The /api/og path is a brand-new cache key, and the
-    // route handler sets no-store headers so it can't get pinned
-    // again. ?v=2 forces social crawlers (WhatsApp, Facebook,
-    // Twitter, LinkedIn) to treat it as a new URL and re-fetch.
-    images: [
-      {
-        url: "https://www.dezignxo.com/api/og?v=2",
-        width: 1200,
-        height: 630,
-        alt: "Dezignxo — premium 3D models, Lottie animations, and SVG icons.",
-        type: "image/png",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Dezignxo — Premium 3D Models, Lottie Animations & SVG Icons",
     description:
       "Production-ready 3D models, 3D icons, Lottie animations, and SVG icon packs. Royalty-free commercial license on every download.",
     creator: "@dezignxo",
-    images: ["https://www.dezignxo.com/api/og?v=2"],
   },
   robots: {
     index: true,
